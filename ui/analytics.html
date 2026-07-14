@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Enn Analytics</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="main-cont">
+            <nav class="sidebar">
+                <div class="enn">
+                    <img
+                        src="images/enn-logo.png"
+                        alt="Enn. Logo"
+                        class="ennlogo"
+                    />
+                    <h1>Enn.</h1>
+                </div>
+                <div class="sideopts">
+                    <div
+                        id="sideselected"
+                        class="sideelements"
+                        onclick="changeSelected(0)"
+                    >
+                        <p>Dashboard</p>
+                    </div>
+                    <div class="sideelements" onclick="changeSelected(1)">
+                        <p>Analytics</p>
+                    </div>
+                    <div class="sideelements" onclick="changeSelected(2)">
+                        <p>Settings</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </body>
+</html>
