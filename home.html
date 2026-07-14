@@ -1,0 +1,127 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enn.</title>
+    <link rel="icon" type="image/png" href="{% static 'home/images/enn-logo.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+   </head>
+
+  <body>
+	<div class="main-cont">
+		<nav class="sidebar">
+		<div class="enn">
+			<img src="{% static 'home/images/enn-logo.png' %}" alt="Enn. Logo" class="ennlogo">
+			<h1>Enn.</h1>
+		</div>
+		<div class="sideopts">
+			<div id="sideselected" class="sideelements" onclick="changeSelected(0)">
+			<p>Dashboard</p>
+			</div>
+			<div class="sideelements" onclick="changeSelected(1)">
+			<p>Analytics</p>
+			</div>
+			<div class="sideelements" onclick="changeSelected(2)">
+			<p>Settings</p>
+			</div>
+		</div>
+		</nav>
+
+		<nav class="main">
+		<div class="left">
+			<h1>Hello <i class="name">{{name}}</i>!</h1>
+			<div class="balance">
+			<p>Take a look at your current balance 💳</p>
+			<div class="balancecard">
+				<p>Balance</p>
+				<h2>₹{{balance}}</h2>
+				<nav class="totalnums">
+				<p>⬆️Income</p>
+				<p>⬇️Expense</p>
+				<p>₹{{income}}</p>
+				<p>₹{{expense}}</p>
+				</nav>
+			</div>
+			</div>
+			<button class="addexpense" onclick="togglepopup(1, 'Expense')">
+			<span class="addplus"">+</span>Add a New Expense
+			</button>
+			<button class="addexpense" onclick="togglepopup(1, 'Credit')">
+			<span class="addplus">+</span>Add a New Credit
+			</button>
+		</div>
+
+		<div class="right">
+			<canvas id="maingraph"></canvas>
+
+			<div class="bars">
+
+			<div class="elements">
+			<p class="label">Electricity</p>
+			<div class="bar">
+				<div class="fill" style="width: 86%"></div>
+			</div>
+			</div>
+
+			<div class="elements">
+			<p class="label">Miscellaneous</p>
+			<div class="bar">
+				<div class="fill" style="width: 67%"></div>
+			</div>
+			</div>
+
+			<div class="elements">
+			<p class="label">Entertainment</p>
+			<div class="bar">
+				<div class="fill" style="width: 43%"></div>
+			</div>
+			</div>
+		</div>
+		</nav>
+	</div>
+
+	<div class="popup">
+		<div class="popupclose" onclick="togglepopup(0, '')"><button>X</button></div>
+
+		<p id="popuplabel"></p>
+
+		<div class="popupgrid">
+
+			<div class="popupelement" style="grid-area: amount;">
+				<p class="label">Amount</p>
+				<input type="number">
+			</div>
+			<div class="popupelement" style="grid-area: descrip;">
+				<p class="label">Description</p>
+				<input type="text">
+			</div>
+			<div class="popupelement" style="grid-area: category;">
+				<p class="label">Category</p>
+				<select>
+					<option value="" disabled selected>Select a category</option>
+					<option value="electricity">⚡ Electricity</option>
+					<option value="entertainment">🎬 Entertainment</option>
+					<option value="food">🍔 Food & Dining</option>
+					<option value="miscellaneous">📦 Miscellaneous</option>
+				</select>
+			</div>
+			<div class="popupelement" style="grid-area: date;">
+				<p class="label">Date</p>
+				<input type="date">
+			</div>
+
+		</div>
+
+		<button style="grid-area: savebtn;">Save</button>
+	</div>
+
+  </body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{% static 'home/js/script.js' %}"></script>
+
+</html>
