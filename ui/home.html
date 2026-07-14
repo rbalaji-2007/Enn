@@ -1,4 +1,3 @@
-{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,14 +6,14 @@
     <title>Enn.</title>
     <link rel="icon" type="image/png" href="{% static 'home/images/enn-logo.png' %}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+	<link rel="stylesheet" href="style.css">
    </head>
 
   <body>
 	<div class="main-cont">
 		<nav class="sidebar">
 		<div class="enn">
-			<img src="{% static 'home/images/enn-logo.png' %}" alt="Enn. Logo" class="ennlogo">
+			<img src="images/enn-logo.png" alt="Enn. Logo" class="ennlogo">
 			<h1>Enn.</h1>
 		</div>
 		<div class="sideopts">
@@ -32,17 +31,17 @@
 
 		<nav class="main">
 		<div class="left">
-			<h1>Hello <i class="name">{{name}}</i>!</h1>
+			<h1>Hello <i class="name">Ved</i>!</h1>
 			<div class="balance">
 			<p>Take a look at your current balance 💳</p>
 			<div class="balancecard">
 				<p>Balance</p>
-				<h2>₹{{balance}}</h2>
+				<h2>₹XX,XXX</h2>
 				<nav class="totalnums">
 				<p>⬆️Income</p>
 				<p>⬇️Expense</p>
-				<p>₹{{income}}</p>
-				<p>₹{{expense}}</p>
+				<p>₹XXXX</p>
+				<p>₹XXXX</p>
 				</nav>
 			</div>
 			</div>
@@ -122,6 +121,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script src="{% static 'home/js/script.js' %}"></script>
+<script src="script.js"></script>
 
 </html>
