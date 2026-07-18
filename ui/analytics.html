@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="main-cont">
+        <div class="analytics-cont">
             <nav class="sidebar">
                 <div class="enn">
                     <img
@@ -32,6 +32,60 @@
                     </div>
                 </div>
             </nav>
+            <nav class="analyticsMain">
+                <canvas id="maingraph"></canvas>
+                <div class="bars">
+                    <div class="elements">
+                        <p class="label">Electricity</p>
+                        <p class="lableamount">₹1116</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 86%"></div>
+                        </div>
+                    </div>
+
+                    <div class="elements">
+                        <p class="label">Miscellaneous</p>
+                        <p class="lableamount">₹870</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 67%"></div>
+                        </div>
+                    </div>
+
+                    <div class="elements">
+                        <p class="label">Entertainment</p>
+                        <p class="lableamount">₹558</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 43%"></div>
+                        </div>
+                    </div>
+
+                    <div class="elements">
+                        <p class="label">Food</p>
+                        <p class="lableamount">₹467</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 36%"></div>
+                        </div>
+                    </div>
+
+                    <div class="elements">
+                        <p class="label">Health</p>
+                        <p class="lableamount">₹312</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 24%"></div>
+                        </div>
+                    </div>
+
+                    <div class="elements">
+                        <p class="label">Health</p>
+                        <p class="lableamount">₹312</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 24%"></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </html>

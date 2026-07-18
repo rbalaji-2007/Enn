@@ -98,11 +98,13 @@
         </div>
 
         <div class="popup">
-            <div class="popupclose" onclick="togglepopup(0, '')">
-                <button>X</button>
-            </div>
 
-            <p id="popuplabel"></p>
+            <div class="popuplabeldiv">
+                <p id="popuplabel"></p>
+                <button class="popupclose" onclick="togglepopup(0, '')">
+                    X
+                </button>
+            </div>
 
             <div class="popupgrid">
                 <div class="popupelement" style="grid-area: amount">
@@ -131,7 +133,7 @@
                 </div>
             </div>
 
-            <button style="grid-area: savebtn">Save</button>
+            <button style="grid-area: savebtn" class="savebtn">Save</button>
         </div>
     </body>
 

@@ -19,6 +19,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    height: 100vh;
+    overflow: hidden;
 }
 .sideopts {
     display: flex;
@@ -36,7 +38,7 @@ body {
     margin: 0;
     font-size: 1rem;
 }
-.sideopts a{
+.sideopts a {
     text-decoration: none;
     color: #ffffff;
 }
@@ -142,7 +144,7 @@ body {
     flex-direction: column;
     gap: 2em;
     width: 70%;
-    height: 70%;
+    height: auto;
 }
 .label {
     width: 5em;
@@ -171,11 +173,29 @@ body {
     justify-self: center;
     border-radius: 12px;
 }
-.popup button {
+.popuplabeldiv {
+    display: flex;
+    align-items: center;
+}
+#popuplabel {
+    align-self: flex-start;
+}
+.popupclose {
+    align-self: flex-end;
+    background-color: hsl(220, 30%, 15%);
+    color: red;
+    font-size: 1.2rem;
     cursor: pointer;
-    background-color: hsl(180, 30%, 20%);
     border: none;
     height: 2em;
+    border-radius: 6px;
+    margin-left: auto;
+}
+.savebtn {
+    cursor: pointer;
+    background-color: hsl(200, 30%, 20%);
+    border: none;
+    height: 3em;
     border-radius: 6px;
 }
 .popupgrid {
@@ -190,9 +210,6 @@ body {
     align-items: center;
     width: 100%;
 }
-.popupclose {
-    align-self: flex-end;
-}
 .popup input,
 .popup select {
     width: 100%;
@@ -204,16 +221,39 @@ body {
     font-size: 0.8rem;
     padding: 4px;
 }
-
+.analytics-cont {
+    display: grid;
+    grid-template-areas: "sidebar analytics-main";
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+}
+.analyticsMain {
+    grid-area: analytics-main;
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(270, 25%, 10%);
+    padding: 2rem;
+    font-size: 1rem;
+    align-items: center;
+    overflow-y: auto;
+    gap: 2em;
+}
 @media (max-width: 768px) {
     .main-cont {
         grid-template-areas: "sidebar" "main";
+        grid-template-columns: 1fr;
+    }
+    .analytics-cont {
+        grid-template-areas: "sidebar" "analytics-main";
         grid-template-columns: 1fr;
     }
     .main {
         grid-template-areas: "left" "right";
         grid-template-columns: 1fr;
         gap: 2em;
+    }
+    .analyticsMain {
+        overflow-y: visible;
     }
     .left {
         align-items: center;
@@ -224,11 +264,12 @@ body {
     .sidebar {
         align-items: center;
         gap: 2px;
+        height: 200px;
     }
     .sideopts {
         flex-direction: row;
     }
     .popup {
-        align-self: start;
+        align-self: center;
     }
 }
