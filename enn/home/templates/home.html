@@ -8,13 +8,13 @@
         <link
             rel="icon"
             type="image/png"
-            href="{% static 'home/images/enn-logo.png' %}"
+            href="{% static 'images/enn-logo.png' %}"
         />
         <link
             href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="{% static 'home/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     </head>
 
     <body>
@@ -22,26 +22,26 @@
             <nav class="sidebar">
                 <div class="enn">
                     <img
-                        src="{% static 'home/images/enn-logo.png' %}"
+                        src="{% static 'images/enn-logo.png' %}"
                         alt="Enn. Logo"
                         class="ennlogo"
                     />
                     <h1>Enn.</h1>
                 </div>
                 <div class="sideopts">
-                    <div
-                        id="sideselected"
-                        class="sideelements"
-                        onclick="changeSelected(0)"
-                    >
+                    <div id="sideselected" class="sideelements">
                         <p>Dashboard</p>
                     </div>
-                    <div class="sideelements" onclick="changeSelected(1)">
-                        <p>Analytics</p>
-                    </div>
-                    <div class="sideelements" onclick="changeSelected(2)">
-                        <p>Settings</p>
-                    </div>
+                    <a href="/analytics">
+                        <div class="sideelements">
+                            <p>Analytics</p>
+                        </div>
+                    </a>
+                    <a href="/settings">
+                        <div class="sideelements">
+                            <p>Settings</p>
+                        </div>
+                    </a>
                 </div>
             </nav>
 
@@ -52,12 +52,12 @@
                         <p>Take a look at your current balance 💳</p>
                         <div class="balancecard">
                             <p>Balance</p>
-                            <h2>₹{{balance}}</h2>
+                            <h2>₹XX,XXX</h2>
                             <nav class="totalnums">
                                 <p>⬆️Income</p>
                                 <p>⬇️Expense</p>
-                                <p>₹{{income}}</p>
-                                <p>₹{{expense}}</p>
+                                <p>₹XXXX</p>
+                                <p>₹XXXX</p>
                             </nav>
                         </div>
                     </div>
@@ -79,21 +79,21 @@
                     <canvas id="maingraph"></canvas>
 
                     <div class="bars">
-                        <div class="elements">
+                        <div class="barelements">
                             <p class="label">Electricity</p>
                             <div class="bar">
                                 <div class="fill" style="width: 86%"></div>
                             </div>
                         </div>
 
-                        <div class="elements">
+                        <div class="barelements">
                             <p class="label">Miscellaneous</p>
                             <div class="bar">
                                 <div class="fill" style="width: 67%"></div>
                             </div>
                         </div>
 
-                        <div class="elements">
+                        <div class="barelements">
                             <p class="label">Entertainment</p>
                             <div class="bar">
                                 <div class="fill" style="width: 43%"></div>
@@ -105,11 +105,16 @@
         </div>
 
         <div class="popup">
-            <div class="popupclose" onclick="togglepopup(0, '')">
-                <button>X</button>
+            <div class="popuplabeldiv">
+                <p id="popuplabel"></p>
+                <button
+                    class="popupclose"
+                    onclick="togglepopup(0, '')"
+                    title="Close"
+                >
+                    X
+                </button>
             </div>
-
-            <p id="popuplabel"></p>
 
             <div class="popupgrid">
                 <div class="popupelement" style="grid-area: amount">
@@ -138,11 +143,11 @@
                 </div>
             </div>
 
-            <button style="grid-area: savebtn">Save</button>
+            <button style="grid-area: savebtn" class="savebtn">Save</button>
         </div>
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="{% static 'home/js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </html>

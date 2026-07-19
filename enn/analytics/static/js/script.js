@@ -1,10 +1,3 @@
-function changeSelected(n) {
-    var element = document.getElementsByClassName("sideelements")[n];
-    var oldElement = document.getElementById("sideselected");
-    oldElement.id = "";
-    element.id = "sideselected";
-}
-
 const ctx = document.getElementById("maingraph");
 
 new Chart(ctx, {

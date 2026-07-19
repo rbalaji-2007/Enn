@@ -1,0 +1,99 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Enn Analytics</title>
+        <link rel="icon" type="image/png" href="{%static 'images/enn-logo.png'%}" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{%static 'css/analytics/style.css'%}" />
+    </head>
+
+    <body>
+        <div class="analytics-cont">
+            <nav class="sidebar">
+                <div class="enn">
+                    <img
+                        src="{%static 'images/enn-logo.png'%}"
+                        alt="Enn. Logo"
+                        class="ennlogo"
+                    />
+                    <h1>Enn.</h1>
+                </div>
+                <div class="sideopts">
+                    <a href="/home">
+                        <div class="sideelements">
+                            <p>Dashboard</p>
+                        </div>
+                    </a>
+                    <div class="sideelements" id="sideselected">
+                        <p>Analytics</p>
+                    </div>
+                    <a href="/settings">
+                        <div class="sideelements">
+                            <p>Settings</p>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+            <nav class="analyticsMain">
+                <canvas id="maingraph"></canvas>
+                <div class="bars">
+                    <div class="barelements">
+                        <p class="label">Electricity</p>
+                        <p class="lableamount">₹1116</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 86%"></div>
+                        </div>
+                    </div>
+
+                    <div class="barelements">
+                        <p class="label">Miscellaneous</p>
+                        <p class="lableamount">₹870</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 67%"></div>
+                        </div>
+                    </div>
+
+                    <div class="barelements">
+                        <p class="label">Entertainment</p>
+                        <p class="lableamount">₹558</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 43%"></div>
+                        </div>
+                    </div>
+
+                    <div class="barelements">
+                        <p class="label">Food</p>
+                        <p class="lableamount">₹467</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 36%"></div>
+                        </div>
+                    </div>
+
+                    <div class="barelements">
+                        <p class="label">Health</p>
+                        <p class="lableamount">₹312</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 24%"></div>
+                        </div>
+                    </div>
+
+                    <div class="barelements">
+                        <p class="label">Health</p>
+                        <p class="lableamount">₹312</p>
+                        <div class="bar">
+                            <div class="fill" style="width: 24%"></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{%static 'js/script.js'%}"></script>
+</html>

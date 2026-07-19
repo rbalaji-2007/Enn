@@ -6,12 +6,15 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-areas: "stack";
+    transition: all 0.3s;
+    background-color: black;
 }
 .main-cont {
     display: grid;
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 4fr;
     grid-area: stack;
+    height: 100vh;
 }
 .sidebar {
     grid-area: sidebar;
@@ -19,6 +22,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    height: 100vh;
+    overflow: hidden;
 }
 .sideopts {
     display: flex;
@@ -35,6 +40,10 @@ body {
 .sideelements p {
     margin: 0;
     font-size: 1rem;
+}
+.sideopts a {
+    text-decoration: none;
+    color: #ffffff;
 }
 #sideselected {
     background-color: hsl(270, 15%, 20%);
@@ -64,6 +73,7 @@ body {
     display: grid;
     grid-template-areas: "left right";
     grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
 }
 .left {
     padding: 2em 0 1em min(2.5em, 8%);
@@ -84,7 +94,7 @@ body {
     outline: 1px solid #ffffff;
     border-radius: 8px;
     padding: 1em;
-    background-image: url("../images/credit-card.jpg");
+    background-image: url("images/credit-card.jpg");
     background-size: cover;
 }
 .balancecard h2,
@@ -138,7 +148,7 @@ body {
     flex-direction: column;
     gap: 2em;
     width: 70%;
-    height: 70%;
+    height: auto;
 }
 .label {
     width: 5em;
@@ -167,12 +177,34 @@ body {
     justify-self: center;
     border-radius: 12px;
 }
-.popup button {
+.popuplabeldiv {
+    display: flex;
+    align-items: center;
+}
+#popuplabel {
+    align-self: flex-start;
+}
+.popupclose {
+    align-self: flex-end;
+    background-color: hsl(220, 30%, 15%);
+    color: red;
+    font-size: 1.2rem;
     cursor: pointer;
-    background-color: hsl(180, 30%, 20%);
     border: none;
     height: 2em;
     border-radius: 6px;
+    margin-left: auto;
+}
+.savebtn {
+    cursor: pointer;
+    background-color: hsl(250, 30%, 20%);
+    border: none;
+    height: 3em;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+.savebtn:hover{
+    background-color: hsl(220, 30%, 20%);
 }
 .popupgrid {
     display: grid;
@@ -186,9 +218,6 @@ body {
     align-items: center;
     width: 100%;
 }
-.popupclose {
-    align-self: flex-end;
-}
 .popup input,
 .popup select {
     width: 100%;
@@ -200,11 +229,11 @@ body {
     font-size: 0.8rem;
     padding: 4px;
 }
-
 @media (max-width: 768px) {
     .main-cont {
         grid-template-areas: "sidebar" "main";
         grid-template-columns: 1fr;
+        height: auto;
     }
     .main {
         grid-template-areas: "left" "right";
@@ -220,11 +249,12 @@ body {
     .sidebar {
         align-items: center;
         gap: 2px;
+        height: auto;
     }
     .sideopts {
         flex-direction: row;
     }
     .popup {
-        align-self: start;
+        align-self: center;
     }
 }

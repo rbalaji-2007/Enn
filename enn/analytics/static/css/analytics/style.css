@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    transition: all 0.3s;
+    background-color: black;
+}
+.analytics-cont {
+    display: grid;
+    grid-template-areas: "sidebar analytics-main";
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+}
+.sidebar {
+    grid-area: sidebar;
+    background-color: hsl(270, 15%, 15%);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 100vh;
+    overflow: hidden;
+}
+.sideopts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 1em;
+}
+.sideelements {
+    width: 80%;
+    padding: 1em;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.sideelements p {
+    margin: 0;
+    font-size: 1rem;
+}
+.sideopts a {
+    text-decoration: none;
+    color: #ffffff;
+}
+#sideselected {
+    background-color: hsl(270, 15%, 20%);
+    transition: all 0.3s;
+}
+.enn {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.enn h1 {
+    color: rgb(150, 225, 50);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.enn h1:hover {
+    text-shadow: 0px 0px 30px rgb(255, 215, 0, 30%);
+}
+.ennlogo {
+    height: 3em;
+    width: 3em;
+}
+#maingraph {
+    max-width: 80%;
+    max-height: 80%;
+    margin: 0;
+}
+.bars {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    width: 70%;
+    height: auto;
+}
+.label {
+    width: 5em;
+}
+.bar {
+    width: 90%;
+    height: 0.4em;
+    background-color: #222222;
+    border-radius: 16px;
+}
+.fill {
+    height: 0.4em;
+    background-color: rgb(70, 70, 240);
+    border-radius: 16px 8px 8px 16px;
+}
+.analyticsMain {
+    grid-area: analytics-main;
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(270, 25%, 10%);
+    padding: 2rem;
+    font-size: 1rem;
+    align-items: center;
+    overflow-y: auto;
+    gap: 2em;
+}
+@media (max-width: 768px) {
+    .analytics-cont {
+        grid-template-areas: "sidebar" "analytics-main";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+    }
+    .sidebar {
+        align-items: center;
+        gap: 2px;
+        height: auto;
+    }
+    .sideopts {
+        flex-direction: row;
+    }
+}

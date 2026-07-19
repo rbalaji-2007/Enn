@@ -2,9 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
+    name = "vedant".capitalize()
     return render(
         request, 
-        "home/home.html", 
-        {"name": "Ved", "balance": "65,906", "income":"8,654", "expense": "6,547"}
+        "home.html", 
+        {"name": name}
         )
 
