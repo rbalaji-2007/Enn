@@ -1,4 +1,5 @@
 const ctx = document.getElementById("maingraph");
+const mainelementinput = document.getElementsByClassName("mainelementinput")[0];
 
 new Chart(ctx, {
     type: "bar", // 📊 Bar chart type
