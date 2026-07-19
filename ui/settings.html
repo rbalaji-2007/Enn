@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Enn Analytics</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="analytics-cont">
+            <nav class="sidebar">
+                <div class="enn">
+                    <img
+                        src="images/enn-logo.png"
+                        alt="Enn. Logo"
+                        class="ennlogo"
+                    />
+                    <h1>Enn.</h1>
+                </div>
+                <div class="sideopts">
+                    <a href="home.html">
+                        <div class="sideelements">
+                            <p>Dashboard</p>
+                        </div>
+                    </a>
+                    <a href="analytics.html">
+                        <div class="sideelements">
+                            <p>Analytics</p>
+                        </div>
+                    </a>
+                    <div class="sideelements" id="sideselected">
+                        <p>Settings</p>
+                    </div>
+                </div>
+            </nav>
+            <nav class="analyticsMain">
+                <div class="mainelements">
+                    <p>Name</p>
+                    <input type="text" class="mainelementinput">
+                </div>
+                <div class="mainelements">
+                    <button>Reset</button>
+                </div>
+                <div class="mainelementsavebtn">
+                    <button>Save</button>
+                </div>
+            </nav>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</html>

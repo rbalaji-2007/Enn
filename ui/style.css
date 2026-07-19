@@ -6,12 +6,15 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-areas: "stack";
+    transition: all 0.3s;
+    background-color: black;
 }
 .main-cont {
     display: grid;
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 4fr;
     grid-area: stack;
+    height: 100vh;
 }
 .sidebar {
     grid-area: sidebar;
@@ -70,6 +73,7 @@ body {
     display: grid;
     grid-template-areas: "left right";
     grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
 }
 .left {
     padding: 2em 0 1em min(2.5em, 8%);
@@ -193,10 +197,14 @@ body {
 }
 .savebtn {
     cursor: pointer;
-    background-color: hsl(200, 30%, 20%);
+    background-color: hsl(250, 30%, 20%);
     border: none;
     height: 3em;
     border-radius: 6px;
+    transition: all 0.3s;
+}
+.savebtn:hover{
+    background-color: hsl(220, 30%, 20%);
 }
 .popupgrid {
     display: grid;
@@ -238,22 +246,65 @@ body {
     overflow-y: auto;
     gap: 2em;
 }
+.analyticsMain button {
+    background-color: hsl(200, 20%, 30%);
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 5em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.mainelements {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+}
+.mainelementinput {
+    background-color: hsl(180, 20%, 30%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.4em;
+}
+.mainelementsavebtn {
+    margin-top: auto;
+}
+.mainelementsavebtn button:hover {
+    box-shadow: 0px 0px 20px hsl(300, 60%, 30%);
+}
 @media (max-width: 768px) {
     .main-cont {
         grid-template-areas: "sidebar" "main";
         grid-template-columns: 1fr;
+        height: auto;
     }
     .analytics-cont {
         grid-template-areas: "sidebar" "analytics-main";
         grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+    }
+    .mainelements {
+        flex-direction: column;
+        align-items: stretch;
+        width: 90%;
+        gap: 1em;
+    }
+    .mainelementinput {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .mainelementsavebtn {
+        width: 90%;
+    }
+    .mainelementsavebtn button {
+        width: 100%;
     }
     .main {
         grid-template-areas: "left" "right";
         grid-template-columns: 1fr;
         gap: 2em;
-    }
-    .analyticsMain {
-        overflow-y: visible;
     }
     .left {
         align-items: center;
@@ -264,7 +315,7 @@ body {
     .sidebar {
         align-items: center;
         gap: 2px;
-        height: 200px;
+        height: auto;
     }
     .sideopts {
         flex-direction: row;
