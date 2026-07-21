@@ -116,18 +116,19 @@
                 </button>
             </div>
 
-            <div class="popupgrid">
+            <form class="popupgrid" method="post">
+                {%csrf_token%}
                 <div class="popupelement" style="grid-area: amount">
                     <p class="label">Amount</p>
-                    <input type="number" />
+                    <input type="number" name="amount" required/>
                 </div>
                 <div class="popupelement" style="grid-area: descrip">
                     <p class="label">Description</p>
-                    <input type="text" />
+                    <input type="text" name="descrip"/>
                 </div>
                 <div class="popupelement" style="grid-area: category">
                     <p class="label">Category</p>
-                    <select>
+                    <select name="category" required>
                         <option value="" disabled selected>
                             Select a category
                         </option>
@@ -139,11 +140,11 @@
                 </div>
                 <div class="popupelement" style="grid-area: date">
                     <p class="label">Date</p>
-                    <input type="date" />
+                    <input type="date" name="date"/ required>
                 </div>
-            </div>
 
-            <button style="grid-area: savebtn" class="savebtn">Save</button>
+                <button style="grid-area: savebtn" class="savebtn">Save</button>
+            </form>
         </div>
     </body>
 

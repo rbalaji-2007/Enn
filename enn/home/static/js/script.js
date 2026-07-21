@@ -40,7 +40,9 @@ new Chart(ctx, {
 function togglepopup(n, labelTxt) {
     const element = document.getElementsByClassName("popup")[0];
     const popup_label = document.getElementById("popuplabel");
+    const savebtn = document.getElementsByClassName("savebtn")[0];
     popup_label.textContent = "Add " + labelTxt;
+    savebtn.name = labelTxt;
     if (n == 1) {
         element.style.display = "flex";
     } else {

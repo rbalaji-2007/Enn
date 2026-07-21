@@ -169,7 +169,7 @@ body {
     background-color: hsl(220, 30%, 15%);
     width: 60%;
     height: min(500px, 70%);
-    padding: 1.5em;
+    padding: 1em;
     display: none;
     flex-direction: column;
     gap: 1em;
@@ -214,7 +214,7 @@ body {
         "category category"
         "date date"
         "savebtn savebtn";
-    gap: 1em;
+    gap: 1.5em;
     align-items: center;
     width: 100%;
 }
