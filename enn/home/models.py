@@ -1,7 +1,7 @@
 from django.db import models
 
 class UserSettings(models.Model):
-    name = models.CharField(max_length=100, default="Vedant")
+    name = models.CharField(max_length=100, default="There")
     currency = models.CharField(max_length=10, default="₹")
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -10,7 +10,7 @@ class UserSettings(models.Model):
 
     @classmethod
     def get_settings(cls):
-        settings, _ = cls.objects.get_or_create(id=1, defaults={"name": "Vedant", "currency": "₹"})
+        settings, _ = cls.objects.get_or_create(id=1, defaults={"name": "there", "currency": "₹"})
         return settings
 
 class Transaction(models.Model):
