@@ -1,21 +1,27 @@
-const ctx = document.getElementById("maingraph");
+function initChart() {
+    const ctx = document.getElementById("maingraph");
+    if (!ctx) return;
 
-let chartLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-let chartExpenses = [0, 0, 0, 0, 0, 0];
-let chartIncome = [0, 0, 0, 0, 0, 0];
+    if (typeof Chart === "undefined") {
+        console.warn("Chart.js library is not loaded.");
+        return;
+    }
 
-try {
-    const labelsEl = document.getElementById("chart-labels-data");
-    const expenseEl = document.getElementById("chart-expense-data");
-    const incomeEl = document.getElementById("chart-income-data");
-    if (labelsEl && labelsEl.textContent.trim()) chartLabels = JSON.parse(labelsEl.textContent);
-    if (expenseEl && expenseEl.textContent.trim()) chartExpenses = JSON.parse(expenseEl.textContent);
-    if (incomeEl && incomeEl.textContent.trim()) chartIncome = JSON.parse(incomeEl.textContent);
-} catch (e) {
-    console.warn("Could not parse dynamic chart data, using defaults.", e);
-}
+    let chartLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let chartExpenses = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let chartIncome = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-if (ctx) {
+    try {
+        const labelsEl = document.getElementById("chart-labels-data");
+        const expenseEl = document.getElementById("chart-expense-data");
+        const incomeEl = document.getElementById("chart-income-data");
+        if (labelsEl && labelsEl.textContent.trim()) chartLabels = JSON.parse(labelsEl.textContent);
+        if (expenseEl && expenseEl.textContent.trim()) chartExpenses = JSON.parse(expenseEl.textContent);
+        if (incomeEl && incomeEl.textContent.trim()) chartIncome = JSON.parse(incomeEl.textContent);
+    } catch (e) {
+        console.warn("Could not parse dynamic chart data, using defaults.", e);
+    }
+
     const chartCtx = ctx.getContext("2d");
 
     const incomeGradient = chartCtx.createLinearGradient(0, 0, 0, 300);
@@ -121,6 +127,12 @@ if (ctx) {
             },
         },
     });
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initChart);
+} else {
+    initChart();
 }
 
 function togglepopup(n, labelTxt) {

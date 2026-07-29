@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+# pyrefly: ignore [missing-import]
 from .models import Transaction, UserSettings
 import datetime
 import json
@@ -55,13 +56,13 @@ def home(request):
     # Recent transactions
     recent_transactions = transactions[:8]
 
-    # Chart data (Monthly totals for expenses and income)
+    # Chart data (Monthly totals for expenses and income - past 12 months)
     today = datetime.date.today()
     months = []
     expense_data = []
     income_data = []
 
-    for i in range(5, -1, -1):
+    for i in range(11, -1, -1):
         year = today.year
         month = today.month - i
         while month <= 0:

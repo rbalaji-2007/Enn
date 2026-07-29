@@ -24,13 +24,13 @@ def analytics(request):
             "percent": percent
         })
 
-    # Prepare past 6 calendar months
+    # Prepare past 12 calendar months
     today = datetime.date.today()
     months = []
     expense_data = []
     income_data = []
 
-    for i in range(5, -1, -1):
+    for i in range(11, -1, -1):
         year = today.year
         month = today.month - i
         while month <= 0:
