@@ -1,16 +1,16 @@
-{%load static%}
+{% load static %}
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Enn Settings</title>
-        <link rel="icon" type="image/png" href="{% static 'images/enn-logo.png'%}" />
+        <title>Enn - Settings</title>
+        <link rel="icon" type="image/png" href="{% static 'images/enn-logo.png' %}" />
         <link
             href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="{%static 'css/settings/style.css'%}" />
+        <link rel="stylesheet" href="{% static 'css/settings/style.css' %}" />
     </head>
 
     <body>
@@ -18,7 +18,7 @@
             <nav class="sidebar">
                 <div class="enn">
                     <img
-                        src="{%static 'images/enn-logo.png'%}"
+                        src="{% static 'images/enn-logo.png' %}"
                         alt="Enn. Logo"
                         class="ennlogo"
                     />
@@ -41,30 +41,23 @@
                 </div>
             </nav>
             <nav class="analyticsMain">
-                <div class="mainelements">
-                    <p>Name</p>
-                </div>
-                <div class="mainelements">
-                    <input type="text" class="mainelementinput">
-                </div>
-                <div class="mainelements">
-                    <p>Actions</p>
-                </div>
-                <div class="mainelements">
-                    <button>Undo</button>
-                    <button>Redo</button>
-                </div>
-                <div class="mainelements">
-                    <p>Danger</p>
-                </div>
-                <div class="mainelements">
-                    <button>Reset</button>
-                </div>
-                <div class="mainelementsavebtn">
-                    <button>Save</button>
-                </div>
+                <form method="post" style="display: flex; flex-direction: column; gap: 2em; align-items: center; width: 100%;">
+                    {% csrf_token %}
+                    <div class="mainelements">
+                        <p>User Name</p>
+                        <input type="text" name="name" value="{{ name }}" class="mainelementinput" required>
+                    </div>
+                    <div class="mainelements">
+                        <p>Danger Zone</p>
+                        <button type="submit" name="action" value="reset" style="background-color: hsl(0, 60%, 40%); color: white; width: 8em;" onclick="return confirm('Are you sure you want to reset all transaction history?');">Reset All Data</button>
+                    </div>
+                    <div class="mainelementsavebtn">
+                        <button type="submit" name="action" value="save" style="background-color: hsl(270, 50%, 35%); color: white; width: 6em;">Save</button>
+                    </div>
+                </form>
             </nav>
         </div>
     </body>
-    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </html>
+

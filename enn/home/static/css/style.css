@@ -94,7 +94,7 @@ body {
     outline: 1px solid #ffffff;
     border-radius: 8px;
     padding: 1em;
-    background-image: url("images/credit-card.jpg");
+    background-image: url("../images/credit-card.jpg");
     background-size: cover;
 }
 .balancecard h2,
@@ -257,4 +257,96 @@ body {
     .popup {
         align-self: center;
     }
+}
+
+.recent-txs {
+    width: 90%;
+    max-width: 20em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-top: 1em;
+}
+.recent-txs h3 {
+    margin: 0 0 0.2em 0;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+.tx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.tx-card {
+    background: hsl(270, 20%, 15%);
+    border-radius: 8px;
+    padding: 0.6em 0.8em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #888;
+}
+.tx-card.credit {
+    border-left-color: #4CAF50;
+}
+.tx-card.expense {
+    border-left-color: #FF5252;
+}
+.tx-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.tx-cat {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.tx-desc {
+    font-size: 0.75rem;
+    color: #aaa;
+}
+.tx-date {
+    font-size: 0.7rem;
+    color: #888;
+}
+.tx-amount-del {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+.tx-amt {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.tx-amt.credit {
+    color: #4CAF50;
+}
+.tx-amt.expense {
+    color: #FF5252;
+}
+.del-btn {
+    background: rgba(255, 82, 82, 0.12);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    color: #ff5252;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 4px 7px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1;
+}
+.del-btn:hover {
+    background: rgba(255, 82, 82, 0.3);
+    border-color: rgba(255, 82, 82, 0.7);
+    transform: scale(1.12);
+    box-shadow: 0 0 12px rgba(255, 82, 82, 0.45);
+}
+.del-btn:active {
+    transform: scale(0.95);
 }

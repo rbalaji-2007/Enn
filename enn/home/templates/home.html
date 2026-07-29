@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Enn.</title>
+        <title>Enn. - Finance Dashboard</title>
         <link
             rel="icon"
             type="image/png"
@@ -47,58 +47,80 @@
 
             <nav class="main">
                 <div class="left">
-                    <h1>Hello <i class="name">{{name}}</i>!</h1>
+                    <h1>Hello <i class="name">{{ name }}</i>!</h1>
                     <div class="balance">
                         <p>Take a look at your current balance 💳</p>
                         <div class="balancecard">
                             <p>Balance</p>
-                            <h2>₹XX,XXX</h2>
+                            <h2>{{ currency }}{{ current_balance }}</h2>
                             <nav class="totalnums">
                                 <p>⬆️Income</p>
                                 <p>⬇️Expense</p>
-                                <p>₹XXXX</p>
-                                <p>₹XXXX</p>
+                                <p>{{ currency }}{{ total_income }}</p>
+                                <p>{{ currency }}{{ total_expense }}</p>
                             </nav>
                         </div>
                     </div>
-                    <button
-                        class="addexpense"
-                        onclick="togglepopup(1, 'Expense')"
-                    >
-                        <span class="addplus">+</span>Add a New Expense
-                    </button>
-                    <button
-                        class="addexpense"
-                        onclick="togglepopup(1, 'Credit')"
-                    >
-                        <span class="addplus">+</span>Add a New Credit
-                    </button>
+                    <div style="display: flex; flex-direction: column; gap: 0.8em;">
+                        <button
+                            class="addexpense"
+                            onclick="togglepopup(1, 'Expense')"
+                        >
+                            <span class="addplus">+</span>Add a New Expense
+                        </button>
+                        <button
+                            class="addexpense"
+                            onclick="togglepopup(1, 'Credit')"
+                            style="background-color: hsl(150, 50%, 20%);"
+                        >
+                            <span class="addplus" style="color: #4CAF50;">+</span>Add a New Credit
+                        </button>
+                    </div>
+
+                    <div class="recent-txs">
+                        <h3>Recent Activity</h3>
+                        <div class="tx-list">
+                            {% for t in recent_transactions %}
+                            <div class="tx-card {{ t.transaction_type|lower }}">
+                                <div class="tx-info">
+                                    <span class="tx-cat">{% if t.transaction_type == 'CREDIT' %}⬆️{% else %}⬇️{% endif %} {{ t.category|title }}</span>
+                                    {% if t.description %}<span class="tx-desc">{{ t.description }}</span>{% endif %}
+                                    <span class="tx-date">{{ t.date|date:"M d, Y" }}</span>
+                                </div>
+                                <div class="tx-amount-del">
+                                    <span class="tx-amt {{ t.transaction_type|lower }}">{{ currency }}{{ t.amount }}</span>
+                                    <form method="post" action="{% url 'delete_transaction' t.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="del-btn" title="Delete Activity">🗑️</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <p style="font-size: 0.85rem; color: #888;">No transactions added yet.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="right">
                     <canvas id="maingraph"></canvas>
 
                     <div class="bars">
+                        {% for bar in category_bars %}
                         <div class="barelements">
-                            <p class="label">Electricity</p>
+                            <p class="label">{{ bar.name }}</p>
                             <div class="bar">
-                                <div class="fill" style="width: 86%"></div>
+                                <div class="fill" style="--fill-width: {{ bar.percent }}%; width: var(--fill-width, 0%);"></div>
                             </div>
                         </div>
-
+                        {% empty %}
                         <div class="barelements">
-                            <p class="label">Miscellaneous</p>
+                            <p class="label">No Expenses</p>
                             <div class="bar">
-                                <div class="fill" style="width: 67%"></div>
+                                <div class="fill" style="width: 0%"></div>
                             </div>
                         </div>
-
-                        <div class="barelements">
-                            <p class="label">Entertainment</p>
-                            <div class="bar">
-                                <div class="fill" style="width: 43%"></div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </nav>
@@ -117,14 +139,14 @@
             </div>
 
             <form class="popupgrid" method="post">
-                {%csrf_token%}
+                {% csrf_token %}
                 <div class="popupelement" style="grid-area: amount">
                     <p class="label">Amount</p>
-                    <input type="number" name="amount" required/>
+                    <input type="number" step="0.01" name="amount" required/>
                 </div>
                 <div class="popupelement" style="grid-area: descrip">
                     <p class="label">Description</p>
-                    <input type="text" name="descrip"/>
+                    <input type="text" name="descrip" placeholder="e.g. Grocery shopping"/>
                 </div>
                 <div class="popupelement" style="grid-area: category">
                     <p class="label">Category</p>
@@ -135,20 +157,28 @@
                         <option value="electricity">⚡ Electricity</option>
                         <option value="entertainment">🎬 Entertainment</option>
                         <option value="food">🍔 Food & Dining</option>
+                        <option value="shopping">🛍️ Shopping</option>
+                        <option value="health">🏥 Health</option>
+                        <option value="salary">💼 Salary / Income</option>
+                        <option value="investment">📈 Investment</option>
                         <option value="miscellaneous">📦 Miscellaneous</option>
                     </select>
                 </div>
                 <div class="popupelement" style="grid-area: date">
                     <p class="label">Date</p>
-                    <input type="date" name="date"/ required>
+                    <input type="date" name="date" required>
                 </div>
 
                 <button style="grid-area: savebtn" class="savebtn">Save</button>
             </form>
         </div>
+
+        <script id="chart-labels-data" type="application/json">{{ chart_labels_json|safe }}</script>
+        <script id="chart-expense-data" type="application/json">{{ chart_expense_json|safe }}</script>
+        <script id="chart-income-data" type="application/json">{{ chart_income_json|safe }}</script>
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script src="{% static 'js/script.js' %}"></script>
 </html>
+
